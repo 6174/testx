@@ -1,0 +1,34 @@
+{
+	"name": "testx",
+	"main": "app/main.html",
+	"description": "testx is a node-webkit based front-end test tool",
+	"version": "0.0.0",
+	"maintainers":{
+		"name": "6174"
+	},
+	"contributors": [
+		{"name": "6174","web": "http://www.6174.com"}
+	],
+	"window": {
+		"debug": true,
+		"icon": "app/assets/img/testx.ico",
+		"toolbar": true,
+		"width": 900,
+		"height": 556,
+		"resizable": false,
+		"position": "center",
+		"frame": true,
+		"show": true
+	},
+	"dependencies": {
+		"node-webkit": ">=0.5.1"
+	},
+	"licenses": [{
+		"type": "Apache 2.0",
+		"url": "http://www.apache.org/licenses/LICENSE-2.0"
+	}],
+	"repositories": [{
+		"type": "git",
+		"url": "https://github.com/6174/testx.git"
+	}]
+}
