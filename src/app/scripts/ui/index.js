@@ -11,7 +11,6 @@ function runWebDriverTest(){
 	btn.on('click', function(ev){
 		mediator.emit('run-webdriver');
 	});
-	console.log(btn, $('.asdfasd'));
 }
 
 module.exports = {

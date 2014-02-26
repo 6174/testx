@@ -1,25 +1,62 @@
 <html>
-<head>
-	<meta charset="utf-8">
-	<title>testX</title>
-	
-	<!-- css -->
-	<link rel="stylesheet" type="text/css" href="assets/libs/bootstrap/css/bootstrap.css">
+  <head>
+    <meta charset="utf-8">
+    <title>testX</title>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="assets/libs/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="assets/libs/bootstrap/css/bootstrap-theme.css">
+    <!-- less -->
+    <link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />
+    <!-- libs -->
+    <script src="assets/libs/less-1.6.2.min.js"></script>
+    <script src="assets/libs/jquery.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.js"></script>
+  </head>
+  <body>
+    <div class=" tx-contaniner">
+      <!-- header navigation -->
+      <!-- ***************** -->
+      <nav class="navbar navbar-inverse navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">TestX</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"> <a id="AddProjectBtn" href="#">Add Project</a></li>
+            <li><a  id="ShowErrorLogBtn" href="#">Log</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">about</a></li>
+                <li><a href="#">document</a></li>
+                <li class="divider"></li>
+                <li><a href="#">lisence</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
-	<!-- less -->
-	<link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />
-	
-	<!-- libs -->
-	<script src="assets/libs/less-1.6.2.min.js"></script>
-	<script src="assets/libs/jquery.js"></script>
-	<script src="assets/libs/bootstrap/js/bootstrap.js"></script>
-
-</head>
-<body>
-	<h1 class="title">Test X showed</h1>
-	<button id="RunWebDriverTest">RunWebDriverTest</button>
-	
-	<!-- main-js -->
-	<script src="scripts/main.js"></script>
-</body>
+      <!-- content section -->
+      <!-- *************** -->
+      <section class="tx-content clearfix">
+          <div class="left-panel panel">
+            <ul> <li> todo-test </li> </ul>
+          </div>
+          <div class="center-panel panel">
+            <button class="btn" type="button">按钮</button>
+            <div class="progress"> <div class="bar"> </div> </div>
+          </div>
+          <div class="right-panel panel">
+          	console log info
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- hidden selector -->
+    <input type="file" class="hide" nwdirectory id="ipt_addProject"/>
+    <!-- main-js -->
+    <script src="scripts/main.js"></script>
+  </body>
 </html>

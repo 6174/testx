@@ -1,12 +1,44 @@
+@import 'assets/lib/est/all.less';
+
+@support-old-ie: false;
 @default-font-size: 14px;
 
 
 html{
-	padding: 20px;
+	overflow: hidden;
 }
 
 .title{
 	color: red;
 	margin-bottom: 20px;
+}
+
+.navbar{
+	margin-bottom: 0px;
+	border-radius: 0px;
+}
+
+button:focus, .btn:focus{
+	outline: none;
+}
+
+.tx-content{
+	.panel{
+		float: left;
+		height: 500px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		text-shadow: 0 1px 0 #fff;
+		background-color: #f7f5fa;
+	}
+	.left-panel{
+		width: 18%;
+	}
+	.center-panel{
+		width: 51%;
+	}
+	.right-panel{
+		width: 30%;
+	}
 }
 
