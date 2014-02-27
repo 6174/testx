@@ -37,6 +37,7 @@ function shareMainContext(){
 
 	//--整个app的和两个上下文之间的信息中介者
 	global.mediator = new events.EventEmitter();
+	global.mediator.fire = global.mediator.emit;
 
 	global.debug = function(msg){
 		console.log(msg);

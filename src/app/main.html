@@ -23,7 +23,11 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"> <a id="AddProjectBtn" href="#">Add Project</a></li>
+            <li class="active">
+              <!-- hidden selector -->
+              <input type="file" class="hide" nwdirectory id="IptAddProject"/>
+              <a id="BtnAddProject" href="#">Add Project</a>
+            </li>
             <li><a  id="ShowErrorLogBtn" href="#">Log</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help<b class="caret"></b></a>
@@ -37,26 +41,23 @@
           </ul>
         </div>
       </nav>
-
       <!-- content section -->
       <!-- *************** -->
       <section class="tx-content clearfix">
-          <div class="left-panel panel">
-            <ul> <li> todo-test </li> </ul>
-          </div>
-          <div class="center-panel panel">
-            <button class="btn" type="button">按钮</button>
-            <div class="progress"> <div class="bar"> </div> </div>
-          </div>
-          <div class="right-panel panel">
-          	console log info
-          </div>
+        <div class="left-panel panel">
+          <ul> <li> todo-test </li> </ul>
         </div>
-      </section>
-    </div>
-    <!-- hidden selector -->
-    <input type="file" class="hide" nwdirectory id="ipt_addProject"/>
-    <!-- main-js -->
-    <script src="scripts/main.js"></script>
-  </body>
+        <div class="center-panel panel">
+          <button class="btn" type="button">按钮</button>
+          <div class="progress"> <div class="bar"> </div> </div>
+        </div>
+        <div class="right-panel panel">
+          console log info
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- main-js -->
+  <script src="scripts/main.js"></script>
+</body>
 </html>
