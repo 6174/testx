@@ -40,10 +40,6 @@ function initProjectEvent(){
 
 }
 
-
-
-
-
 module.exports = {
 	init: init
 };
