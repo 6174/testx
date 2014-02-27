@@ -12,50 +12,39 @@ var browser = wd.promiseChainRemote();
 chaiAsPromised.transferPromiseness = wd.transferPromiseness;
 
 
-// // optional extra logging
-// browser.{browserName:'chrome'}_debugPromise();
 browser.on('status', function(info) {
   console.log(info.cyan);
 });
+
 browser.on('command', function(meth, path, data) {
   console.log(' > ' + meth.yellow, path.grey, data || '');
 });
 
-// browser.init({browserName:'chrome'}, function(){
-//   browser
-//     .get("http://admc.io/wd/test-pages/guinea-pig.html")
-//     .elementById('i am a link')
-//     .click()
-//     .eval("window.location.href")
-//     .should.eventually.include('guinea-pig2')
-// });
 
-browser
-  .init({browserName:'chrome'})
-  .get("http://admc.io/wd/test-pages/guinea-pig.html")
-  .title()
-    .should.become('WD Tests')
-  .elementById('i am a link')
-  .click()
-  .eval("window.location.href")
-    .should.eventually.include('guinea-pig2')
-  .back()
-  .elementByCss('#comments').type('Bonjour!')
-  .getValue().should.become('Bonjour!')
-  .fin(function() { return browser.quit(); })
-  .done();
-// /* jshint evil: true */
-// browser
-//   .init()
-//   .get("http://admc.io/wd/test-pages/guinea-pig.html")
-//   .title()
-//     .should.become('WD Tests')
-//   .elementById('i am a link')
-//   .click()
-//   .eval("window.location.href")
-//     .should.eventually.include('guinea-pig2')
-//   .back()
-//   .elementByCss('#comments').type('Bonjour!')
-//   .getValue().should.become('Bonjour!')
-//   .fin(function() { return browser.quit(); })
-//   .done();
+(function spawnSeleniumStandalone(config){
+  var spawn = require('child_process').spawn;
+  var path = require('path');
+  var path = path.join(__dirname, '../../../node_modules/selenium-standalone/bin/start-selenium.js');
+  var args = [path];
+  spawn('node', args);
+})();
+
+
+function run(config){
+  // browser.done();
+  browser
+    .init({browserName: config.broswer})
+    .get("http://admc.io/wd/test-pages/guinea-pig.html")
+    .elementById('i am a link')
+    .click()
+    .eval("window.location.href")
+    .back()
+    .elementByCss('#comments').type('Bonjour!')
+    .fin(function() { return browser.quit(); })
+    .done();
+}
+
+
+module.exports = {
+  run: run
+}

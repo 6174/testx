@@ -50,16 +50,16 @@ function shareMainContext(){
 
 function listenAndHandleError(){
 
-	// process.on('uncaughtException', function (err) {
-	//     var message = '---uncaughtExceptionsed---\n' + err.stack + '\n\n';
+	process.on('uncaughtException', function (err) {
+	    var message = '---uncaughtExceptionsed---\n' + err.stack + '\n\n';
+	    // fs.appendFile(FileManager.errorLogFile, message);
+	    console.log(message);
+	});
+
+	// window.addEventListener('error', function (err) {
+	//     var message = '---error---\n' + err.filename + ':' + err.lineno + '\n' + err.message + '\n\n';
 	//     // fs.appendFile(FileManager.errorLogFile, message);
 	//     window.alert(message);
-	// });
-
-	window.addEventListener('error', function (err) {
-	    var message = '---error---\n' + err.filename + ':' + err.lineno + '\n' + err.message + '\n\n';
-	    // fs.appendFile(FileManager.errorLogFile, message);
-	    window.alert(message);
-	    return false;
-	}, false);
+	//     return false;
+	// }, false);
 }

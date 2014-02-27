@@ -4,14 +4,12 @@
 var util = require('util'),
 	projectManager = require('./project/projectManager.js');
 	ui = require('./ui/index.js');
-
+	driver = require('./webdriver/driver.js');
 function init() {
 	initProjectEvent();
 	mediator.on('run-webdriver', function(ev) {
-		window.alert('run-webdriver');
-		require('./webdriver/driver.js');
+		driver.run(ev.config);
 	});
-
 }
 
 function initProjectEvent(){
@@ -36,6 +34,7 @@ function initProjectEvent(){
 		//--render panel flower
 		console.log('loaded-project');
 		console.log(util.inspect(ev));
+		ui.showProject(ev.projectConfig);
 	});
 
 }

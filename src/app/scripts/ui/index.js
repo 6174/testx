@@ -1,9 +1,10 @@
 /**
  * 实验性的尝试
  */
+var util = require('util');
+
 function init(){
 	initHeaderNavigation();
-	runWebDriverTest();
 }
 
 function initHeaderNavigation(){
@@ -17,16 +18,18 @@ function initHeaderNavigation(){
 		mediator.emit('add-project', {value: ipt.val()});
 		ipt.val('');
 	});
+
+
 }
 
-function runWebDriverTest(){
-	//--bing
-	var btn = $('#RunWebDriverTest');
-	btn.on('click', function(ev){
-		mediator.emit('run-webdriver');
+function showProject(projectConfig){
+	$('#ProjectConfigText').text(util.inspect(projectConfig));
+	mediator.fire('run-webdriver', {
+		config: projectConfig
 	});
 }
 
 module.exports = {
-	init: init
+	init: init,
+	showProject: showProject
 };
