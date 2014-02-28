@@ -1,4 +1,4 @@
-@import 'assets/lib/est/all.less';
+// @import 'assets/lib/est/all.less';
 
 @support-old-ie: false;
 @default-font-size: 14px;
@@ -47,12 +47,36 @@ button:focus, .btn:focus{
 			padding-top: 0px;
 		}
 		.playground{
-			height: 80%;
+			height: 73%;
 			width: 100%;
-			overflow-x: hidden;
-			overflow-y: scroll;
+			table td{
+				padding: 3px;
+			}
+			table th{
+				padding: 5px;
+			}
+
+			table.suite {
+				margin: 5px 0 0 0;
+			}
+
+
+			table.suite td.status {
+				width: 65px;
+				text-align: center;
+				vertical-align: middle;
+			}
+
+			td.status .label{
+				padding: 1px;
+			}
+
 			table.suite tr.report td {
 				background-color: #EEE;
+			}
+
+			table.suite tr.report td table td {
+				border: none;
 			}
 		}
 	}

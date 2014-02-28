@@ -4,7 +4,8 @@
 var util = require('util'),
 	ejs = require('ejs'),
 	fs = require('fs-extra'),
-	LeftPanelView = require('./leftpanel/leftPanelView.js'),
+	LeftPanelView = require('./leftpanel/LeftPanelView.js'),
+	CenterPanelView = require('./centerpanel/CenterPanelView.js'),
 	NavigationView = require('./NavigationView.js');
 
 var AppView = Backbone.View.extend({
@@ -19,12 +20,16 @@ var AppView = Backbone.View.extend({
 		this.render();
 
 		//--init-child-views
-		this.childviews['leftPanelView'] = new LeftPanelView();
 		this.childviews['navigationView'] = new NavigationView();
+		this.childviews['leftPanelView'] = new LeftPanelView();
+		this.childviews['centerPanelView'] = new CenterPanelView();
 		// this.centerPanelView = new CenterPanelView();
 		// this.rightPanelView = new RightPanelView();
 		//--init-ui-els
 		this.els['showLogBtn'] = this.$("#someBtn");
+
+		//--init scroll-bar
+		$('.custom-scrollbar').mCustomScrollbar();
 	},
 	render: function(){
 		var filename = __dirname + '/../../templates/main.ejs';
