@@ -3,7 +3,9 @@
  */
 
 var events = require('events'),
-	util = require('util');
+	util = require('util'),
+	fs = require('fs-extra'),
+	path = require('path');
 
 function testUtilAndEvent() {
 	//-- test nodejs's util and Event
@@ -30,3 +32,17 @@ function testUtilAndEvent() {
 		'I': 'was a visitor'
 	});
 }
+
+function testEjs(){
+	var ejs = require('ejs');
+	var src = path.join(__dirname, '../templates/test.html');
+	var ret = ejs.render(String(fs.readFileSync(src)), {
+		user: {name: 'xuejia & dandan'},
+		helpert: function(str){
+			return 'xuejia love dandan';
+		}
+	});
+	$('#TxRightPanel').text(ret);
+}
+
+

@@ -2,6 +2,8 @@
  * 实验性的尝试
  */
 var util = require('util'),
+	ejs = require('ejs'),
+	fs = require('fs-extra'),
 	LeftPanelView = require('./leftpanel/leftPanelView.js'),
 	NavigationView = require('./NavigationView.js');
 
@@ -14,6 +16,8 @@ var AppView = Backbone.View.extend({
 	},
 	initialize: function(){
 		console.log('initialize AppView');
+		this.render();
+
 		//--init-child-views
 		this.childviews['leftPanelView'] = new LeftPanelView();
 		this.childviews['navigationView'] = new NavigationView();
@@ -22,11 +26,14 @@ var AppView = Backbone.View.extend({
 		//--init-ui-els
 		this.els['showLogBtn'] = this.$("#someBtn");
 	},
+	_prerender: function(){
+	},
 	render: function(){
-		window.alert('app view render called');
-		_.each(this.childviews, function(view){
-			view.render();
-		});
+		var filename = __dirname + '/../../templates/main.ejs';
+		var str = fs.readFileSync(filename);
+		$(this.el).html(ejs.render(String(str), {
+			filename: filename
+		}));
 	},
 	showLog: function(){
 
