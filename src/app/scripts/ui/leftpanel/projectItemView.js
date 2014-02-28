@@ -2,12 +2,13 @@
  * project Item view
  */
 
-var Backbone = require('backbone'),
-	ProjectList = require('../../project/ProjectCollection.js'),
+var	ProjectList = require('../../project/ProjectCollection.js'),
 	ProjectModel = require('../../project/ProjectModel.js');
 
 var ProjectItemView = Backbone.View.extend({
 	tagName: 'li',
+	className: 'project-item',
+	attributes: {},
 	template: '',
 	events: {
 		'click .view': 'showProject',

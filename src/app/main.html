@@ -10,13 +10,15 @@
     <!-- libs -->
     <script src="assets/libs/less-1.6.2.min.js"></script>
     <script src="assets/libs/jquery.js"></script>
+    <script src="assets/libs/underscore.js"></script>
+    <script src="assets/libs/backbone.js"></script>
     <script src="assets/libs/bootstrap/js/bootstrap.js"></script>
   </head>
   <body>
-    <div class=" tx-contaniner">
+    <div class=" tx-contaniner" id="TxApp">
       <!-- header navigation -->
       <!-- ***************** -->
-      <nav class="navbar navbar-inverse navbar-default" role="navigation">
+      <nav class="navbar navbar-inverse navbar-default" id="TxNav" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
           <a class="navbar-brand" href="#">TestX</a>
@@ -55,10 +57,9 @@
         <div class="right-panel panel">
           console log info
         </div>
-      </div>
-    </section>
-  </div>
-  <!-- main-js -->
-  <script src="scripts/main.js"></script>
-</body>
+      </section>
+    </div>
+    <!-- main-js -->
+    <script src="scripts/main.js"></script>
+  </body>
 </html>

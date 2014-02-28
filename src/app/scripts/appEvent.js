@@ -5,12 +5,13 @@ var util = require('util'),
 	projectManager = require('./project/projectManager.js');
 	ui = require('./ui/index.js');
 	driver = require('./webdriver/driver.js');
-function init() {
+
+(function init() {
 	initProjectEvent();
 	mediator.on('run-webdriver', function(ev) {
 		driver.run(ev.config);
 	});
-}
+})()
 
 function initProjectEvent(){
 	mediator.on('add-project', function(ev){
@@ -38,7 +39,3 @@ function initProjectEvent(){
 	});
 
 }
-
-module.exports = {
-	init: init
-};

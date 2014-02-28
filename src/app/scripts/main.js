@@ -15,13 +15,15 @@ var path        = require('path'),
 (function init(){
 	shareMainContext();
 	listenAndHandleError();
-	startApp();
+	$(function(){
+		startApp();
+	})
 })();
 
 function startApp(){
 	require('./scripts/experiment');
-	require('./scripts/appEvent').init();
-	require('./scripts/ui/index').init();
+	require('./scripts/appEvent');
+	require('./scripts/ui/index');
 }
 
 function shareMainContext(){
@@ -32,6 +34,8 @@ function shareMainContext(){
 	global.mainWindow = gui.Window.get();
 
 	global.$ = $;
+	global.Backbone = Backbone;
+	global._ = _;
 
 	global.localStorage = window.localStorage;
 
@@ -41,10 +45,6 @@ function shareMainContext(){
 
 	global.debug = function(msg){
 		console.log(msg);
-	}
-
-	global.getFileManager = function(){
-		return FileManager;
 	}
 }
 

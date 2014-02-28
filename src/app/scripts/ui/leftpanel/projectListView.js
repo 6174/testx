@@ -1,10 +1,10 @@
 /**
  * project list view
  */
-var Backbone = require('backbone'),
-    ProjectItemView = require('./ProjectItemView'),
+var ProjectItemView = require('./ProjectItemView'),
     ProjectList = require('../../project/ProjectCollection.js'),
     ProjectModel = require('../../project/ProjectModel.js');
+    
 var ProjectListView = Backbone.View.extend({
     el: $('#LeftPanel'),
     template: '',
