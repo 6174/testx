@@ -26,8 +26,6 @@ var AppView = Backbone.View.extend({
 		//--init-ui-els
 		this.els['showLogBtn'] = this.$("#someBtn");
 	},
-	_prerender: function(){
-	},
 	render: function(){
 		var filename = __dirname + '/../../templates/main.ejs';
 		var str = fs.readFileSync(filename);

@@ -26,19 +26,40 @@ button:focus, .btn:focus{
 	.panel{
 		float: left;
 		height: 500px;
-		padding-top: 10px;
+		padding-top: 3px;
 		padding-bottom: 10px;
-		text-shadow: 0 1px 0 #fff;
-		background-color: #f7f5fa;
+		border: none;
+		border-radius: 0px;
 	}
 	.left-panel{
 		width: 18%;
+		background: rgb(237, 231, 240);
+		li a{
+			border-radius: 0px;
+		}
 	}
 	.center-panel{
 		width: 51%;
+		.control{
+			margin-bottom: 5px;
+		}
+		.panel-body{
+			padding-top: 0px;
+		}
+		.playground{
+			height: 80%;
+			width: 100%;
+			overflow-x: hidden;
+			overflow-y: scroll;
+			table.suite tr.report td {
+				background-color: #EEE;
+			}
+		}
 	}
 	.right-panel{
-		width: 30%;
+		width: 31%;
 	}
 }
+
+
 
