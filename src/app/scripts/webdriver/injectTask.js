@@ -57,7 +57,8 @@ function comboScripts(task){
 	});
 
 	task.combo = str;
-	fs.writeFile("combo.js", str ,function(e){
+	task.combosrc = path.join(__dirname, '../../assets/tmp/' + "combo.js");
+	fs.writeFile(task.combosrc, str ,function(e){
 	    if(e) throw e;
 	});
 }

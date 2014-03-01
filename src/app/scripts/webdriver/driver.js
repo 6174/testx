@@ -41,8 +41,8 @@ function run(config) {
         return browser.title();
     }).then(function(title) {
         console.log('get-title: ' + title);
-        window.eval(injectTask.combo);
-        browser.eval(injectTask.combo);
+        console.log('combo src: ' + injectTask.combosrc.replace(/\\/g, '\/\/'));
+        browser.eval('(function(){var h = document.getElementsByTagName("head").item(0), s = document.createElement("script"); s.src="' + injectTask.combosrc.replace(/\\/g, '\/') + '"; h.appendChild(s);})();');
         return browser.eval("window.location.href"); 
     }).then(function(href) {
         console.log('get-href: ' + href);
