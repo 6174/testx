@@ -21,6 +21,7 @@ var path        = require('path'),
 })();
 
 function startApp(){
+	require('./scripts/server.js').start();
 	require('./scripts/experiment');
 	require('./scripts/appEvent');
 	require('./scripts/ui/index');

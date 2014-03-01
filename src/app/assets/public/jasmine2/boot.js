@@ -162,13 +162,14 @@
    */
   var currentWindowOnload = window.onload;
 
-  window.onload = function() {
-    if (currentWindowOnload) {
-      currentWindowOnload();
-    }
-    // htmlReporter.initialize();
-    env.execute();
-  };
+  // window.onload = function() {
+  //   if (currentWindowOnload) {
+  //     currentWindowOnload();
+  //   }
+  //   console.log('asdf');
+  //   // htmlReporter.initialize();
+  // };
+  // env.execute();
 
   /**
    * Helper function for readability above.

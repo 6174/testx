@@ -2568,13 +2568,14 @@ getJasmineRequireObj().version = function() {
    */
   var currentWindowOnload = window.onload;
 
-  window.onload = function() {
-    if (currentWindowOnload) {
-      currentWindowOnload();
-    }
-    // htmlReporter.initialize();
-    env.execute();
-  };
+  // window.onload = function() {
+  //   if (currentWindowOnload) {
+  //     currentWindowOnload();
+  //   }
+  //   console.log('asdf');
+  //   // htmlReporter.initialize();
+  // };
+  // env.execute();
 
   /**
    * Helper function for readability above.
@@ -5994,13 +5995,19 @@ if (typeof define === "function" && define.amd) {
  * 注入浏览器的脚本代码
  */
 (function() {
-    var socket = {emit: function(){}, on: function(){}};//io.connect();
+    var socket = io.connect('http://localhost:5051');
+    socket.on('connect', function() {
+        socket.emit('hello-dandan', 'I am chenxuejia ! haha!');
+    });
+    socket.on('news', function() {
+        alert('I get news');
+    });
+    //{emit: function(){}, on: function(){}};//
     var addListener = window.addEventListener ? function(obj, evt, cb) {
             obj.addEventListener(evt, cb, false)
         } : function(obj, evt, cb) {
             obj.attachEvent('on' + evt, cb)
         }
-
     window.Injector = {
         useCustomAdapter: function(adapter) {
             adapter(socket)
@@ -6027,13 +6034,12 @@ if (typeof define === "function" && define.amd) {
         },
         handleConsoleMessage: function() {}
     };
-
     window.emit = function emit() {
         Injector.emit.apply(Injector, arguments);
         console.log(arguments);
     }
-
     init();
+
     function init() {
         // takeOverConsole();
         interceptWindowOnError();
@@ -6051,7 +6057,6 @@ if (typeof define === "function" && define.amd) {
         // addListener(window, 'load', initUI)
         setupTestStats()
     }
-
 
     function takeOverConsole() {
         var console = window.console
@@ -6201,4 +6206,10 @@ describe("Group2", function() {
        expect(true).toBe(false);
    });
 });
+
+/******************/
+(function(){
+	var env = jasmine && jasmine.getEnv();
+	env && env.execute();
+})();
 

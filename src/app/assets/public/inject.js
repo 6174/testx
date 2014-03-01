@@ -2,13 +2,19 @@
  * 注入浏览器的脚本代码
  */
 (function() {
-    var socket = {emit: function(){}, on: function(){}};//io.connect();
+    var socket = io.connect('http://localhost:5051');
+    socket.on('connect', function() {
+        socket.emit('hello-dandan', 'I am chenxuejia ! haha!');
+    });
+    socket.on('news', function() {
+        alert('I get news');
+    });
+    //{emit: function(){}, on: function(){}};//
     var addListener = window.addEventListener ? function(obj, evt, cb) {
             obj.addEventListener(evt, cb, false)
         } : function(obj, evt, cb) {
             obj.attachEvent('on' + evt, cb)
         }
-
     window.Injector = {
         useCustomAdapter: function(adapter) {
             adapter(socket)
@@ -35,13 +41,12 @@
         },
         handleConsoleMessage: function() {}
     };
-
     window.emit = function emit() {
         Injector.emit.apply(Injector, arguments);
         console.log(arguments);
     }
-
     init();
+
     function init() {
         // takeOverConsole();
         interceptWindowOnError();
@@ -59,7 +64,6 @@
         // addListener(window, 'load', initUI)
         setupTestStats()
     }
-
 
     function takeOverConsole() {
         var console = window.console

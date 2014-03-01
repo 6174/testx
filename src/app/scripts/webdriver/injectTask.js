@@ -34,6 +34,7 @@ function setJasmineTask(task){
 		path.join(jasminePath, 'boot.js'),
 		path.join(jasminePath, 'adapter.js')
 	]);
+	task.execTrigger = path.join(jasminePath, 'exec.js'); 
 }
 
 function setTestTask(task, projectConfig){
@@ -56,8 +57,11 @@ function comboScripts(task){
 		str += getScript(item);
 	});
 
+	//--exec trigger
+	str += getScript(task.execTrigger);
+
 	task.combo = str;
-	task.combosrc = path.join(__dirname, '../../assets/tmp/' + "combo.js");
+	task.combosrc = path.join(__dirname, '../../assets/public/tmp/' + "combo.js");
 	fs.writeFile(task.combosrc, str ,function(e){
 	    if(e) throw e;
 	});

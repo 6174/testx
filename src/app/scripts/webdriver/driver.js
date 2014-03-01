@@ -15,6 +15,7 @@ var colors = require('colors'),
         console.log(' > ' + meth.yellow, path.grey, data || '');
     });
 })();
+
 (function spawnSeleniumStandalone(config) {
     var spawn = require('child_process').spawn;
     var path = require('path');
@@ -42,7 +43,7 @@ function run(config) {
     }).then(function(title) {
         console.log('get-title: ' + title);
         console.log('combo src: ' + injectTask.combosrc.replace(/\\/g, '\/\/'));
-        browser.eval('(function(){var h = document.getElementsByTagName("head").item(0), s = document.createElement("script"); s.src="' + injectTask.combosrc.replace(/\\/g, '\/') + '"; h.appendChild(s);})();');
+        browser.eval('(function(){var h = document.getElementsByTagName("head").item(0), s = document.createElement("script"); s.src="http://localhost:5051/tmp/combo.js"; h.appendChild(s);})();');
         return browser.eval("window.location.href"); 
     }).then(function(href) {
         console.log('get-href: ' + href);
