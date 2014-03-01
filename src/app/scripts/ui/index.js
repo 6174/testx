@@ -29,7 +29,11 @@ var AppView = Backbone.View.extend({
 		this.els['showLogBtn'] = this.$("#someBtn");
 
 		//--init scroll-bar
-		$('.custom-scrollbar').mCustomScrollbar();
+		$('.custom-scrollbar').mCustomScrollbar({
+			theme: 'dark',
+			advanced:{ updateOnContentResize:true}
+		});
+		// mCustomScrollbar("update");
 	},
 	render: function(){
 		var filename = __dirname + '/../../templates/main.ejs';
