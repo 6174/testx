@@ -17,14 +17,6 @@ function start(conf) {
 function initApp() {
     var publicPath = path.join(__dirname, '../assets/public');
     app = connect()
-	    .use(function(req, res, next) {
-	        // Website you wish to allow to connect
-	        res.setHeader('Access-Control-Allow-Origin', '*:*');
-	        // Request methods you wish to allow
-	        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-	        // Request headers you wish to allow
-	        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-	    })
 	    .use(connect.static(publicPath, {
 	        maxAge: 60 * 60 * 1000,
 	        hidden: false
@@ -36,7 +28,8 @@ function initServer() {
 }
 
 function initSocket() {
-    io = SocketIO.listen(app, {
+    console.log('init socket');
+    io = SocketIO.listen(server, {
         origins: '*:*'
     });
     // io.set('transports', ['websocket', 'flashsocket', 'htmlfile', 'xhr-polling', 'jsonp-polling']);
