@@ -3,12 +3,9 @@
  */
 (function() {
     var socket = io.connect('http://localhost:5051');
-    socket.on('connect', function() {
-        socket.emit('hello-dandan', 'I am chenxuejia ! haha!');
-    });
-    socket.on('news', function() {
-        alert('I get news');
-    });
+    // socket.on('connect', function() {
+        // socket.emit('', 'I am chenxuejia ! haha!');
+    // });
     //{emit: function(){}, on: function(){}};//
     var addListener = window.addEventListener ? function(obj, evt, cb) {
             obj.addEventListener(evt, cb, false)
@@ -41,6 +38,7 @@
         },
         handleConsoleMessage: function() {}
     };
+    
     window.emit = function emit() {
         Injector.emit.apply(Injector, arguments);
         console.log(arguments);

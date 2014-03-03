@@ -23,8 +23,19 @@ function jasmine2Adapter() {
 			emit('tests-start')
 		};
 
-		this.specDone = function(spec) {
+		this.jasmineDone = function() {
+			emit('all-test-results', results)
+		};
 
+		this.suiteStarted = function(result){
+			emit('suit-start', result);
+		}
+
+		this.suiteDone = function(result) {
+			emit('suit-done', result);
+		}
+
+		this.specDone = function(spec) {
 			var test = {
 				passed: 0,
 				failed: 0,
@@ -36,7 +47,7 @@ function jasmine2Adapter() {
 			};
 
 			var i, l, failedExpectations, item;
-
+			console.log(spec);
 			if(spec.status === 'passed') {
 				test.passed++;
 				test.total++;
@@ -65,9 +76,6 @@ function jasmine2Adapter() {
 			emit('test-result', test)
 		};
 
-		this.jasmineDone = function() {
-			emit('all-test-results', results)
-		};
 	}
 	jasmine.getEnv().addReporter(new Jasmine2AdapterReporter);
 }

@@ -37,8 +37,14 @@ function initSocket() {
         socket.emit('news', {
             hello: 'world'
         });
-        socket.on('hello-dandan', function(data) {
-            window.alert(data);
+
+        socket.on('test-result', function(data){
+            mediator.emit('handle-test-result', data);
+        });
+
+        socket.on('all-test-results', function(data){
+            mediator.emit('handle-all-test-results', data);
+            mediator.emit('quit-broswer');
         });
     });
 }
