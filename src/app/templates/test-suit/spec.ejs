@@ -1,8 +1,8 @@
 <!-- test spec -->
-<tr class="spec" id="<%= specId %>">
+<tr class="spec" id="<%= id %>">
   <td><%= description %></td>
   <td class="status">
-    <% if (passed) { %>
+    <% if (failed == 0) { %>
       <span data-state="ready" class="label label-success">PASS</span>
     <% } else { %>
       <span data-state="ready" class="label label-important">FAIL</span>
@@ -10,7 +10,7 @@
   </td>
 </tr>
 <!-- test spec report -->
-<tr class="report" id="Report-<%= specId %>">
+<tr class="report" id="Report-<%= id %>">
   <td colspan="2">
   </td>
 </tr>

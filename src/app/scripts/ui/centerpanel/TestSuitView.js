@@ -13,27 +13,30 @@ var TestSuitView = Backbone.View.extend({
 	specTemplate: getSpecTemplateFunc(),
 	events: {},
 	initialize: function(){
-		//
+		this.listenTo(this.model, 'add-spec', function(specModel){
+			this.addSpec(specModel);
+		});
 	},
-	render: function(suitModel){
-		this.$el.html(this.suitTemplate(suitModel));
+	render: function(){
+		this.$el.html(this.suitTemplate(this.model.toJSON()));
+		return this;
 	},
-	appendSpec: function(specModel){
-		var specNode = $(this.specTemplate(specModel));
+	addSpec: function(specModel){
+		var specNode = $(this.specTemplate(specModel.toJSON()));
 		this.$('.test-specs').append(specNode);
 	}
 });
 
 function getSuitTemplateFunc(){
 	var src = path.join(__dirname, '../../../templates/test-suit/', 'suit.ejs');
-	var str = fs.readFileSync(filename);
+	var str = fs.readFileSync(src);
 
 	return window.hehe = ejs.compile(String(str));
 };
 
 function getSpecTemplateFunc(){
 	var src = path.join(__dirname, '../../../templates/test-suit/', 'spec.ejs');
-	var str = fs.readFileSync(filename);
+	var str = fs.readFileSync(src);
 	return ejs.compile(String(str));
 }
 

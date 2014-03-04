@@ -30,7 +30,8 @@ function initServer() {
 function initSocket() {
     console.log('init socket');
     io = SocketIO.listen(server, {
-        origins: '*:*'
+        origins: '*:*',
+        debug: false
     });
     // io.set('transports', ['websocket', 'flashsocket', 'htmlfile', 'xhr-polling', 'jsonp-polling']);
     io.sockets.on('connection', function(socket) {
@@ -38,11 +39,19 @@ function initSocket() {
             hello: 'world'
         });
 
-        socket.on('test-result', function(data){
+        socket.on('spec-done', function(data){
             mediator.emit('handle-test-result', data);
         });
 
-        socket.on('all-test-results', function(data){
+        socket.on('suit-start', function(data){
+            mediator.emit('handle-test-suit', data);
+        });
+
+        socket.on('suit-done', function(data){
+            mediator.emit('handle-suit-done');
+        });
+
+        socket.on('tests-done', function(data){
             mediator.emit('handle-all-test-results', data);
             mediator.emit('quit-broswer');
         });

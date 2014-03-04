@@ -1,6 +1,8 @@
 /**
  * center panel view
  */
+var TestPlaygroundView = require('./TestPlaygroundView.js');
+
 var CenterPanelView = Backbone.View.extend({
     el: '#TxCenterPanel',
     els: {},
@@ -8,11 +10,7 @@ var CenterPanelView = Backbone.View.extend({
     events: {},
     initialize: function() {
     	console.log('initialize centerpanel');
-    },
-    initCustomScroll: function() {
-        var el = this.els['playground'] = this.$('#TxPlayground');
-        console.log(el);
-        // $("#content-1").mCustomScrollbar("scrollTo","#content-2");
+        this.childviews['testPlaygroudView'] = new TestPlaygroundView(); 
     },
     render: function() {}
 });

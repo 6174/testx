@@ -2615,7 +2615,7 @@ function jasmine2Adapter() {
 		};
 
 		this.jasmineDone = function() {
-			emit('all-test-results', results)
+			emit('tests-done', results)
 		};
 
 		this.suiteStarted = function(result){
@@ -2632,13 +2632,15 @@ function jasmine2Adapter() {
 				failed: 0,
 				total: 0,
 				pending: 0,
+				groupName: spec.fullName.replace(' ' + spec.description, ''),
 				id: spec.id + 1,
+				description: spec.description,
 				name: spec.fullName,
 				items: []
 			};
 
 			var i, l, failedExpectations, item;
-			console.log(spec);
+
 			if(spec.status === 'passed') {
 				test.passed++;
 				test.total++;
@@ -2664,7 +2666,7 @@ function jasmine2Adapter() {
 
 			results.total++;
 
-			emit('test-result', test)
+			emit('spec-done', test)
 		};
 
 	}
