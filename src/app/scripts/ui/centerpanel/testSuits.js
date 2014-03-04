@@ -42,12 +42,12 @@ var TestSuitCollection = Backbone.Collection.extend({
     initialize: function() {
         this.hashedSuits = {};
         this.on('add', function(model) {
-            console.log('add-model', model.toJSON());
+        	console.time('suit');
+        	console.log('-----------------addSuitModel');
             this.hashedSuits[model.get('fullName')] = model;
         });
     },
     addSpec: function(specConfig) {
-        console.log('add-spec', specConfig);
         var groupName = specConfig.groupName;
         var suit = this.hashedSuits[groupName];
         if (!suit) {

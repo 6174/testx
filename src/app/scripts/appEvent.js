@@ -34,7 +34,6 @@ function initProjectEvent() {
     mediator.on('loaded-project', function(ev) {
         //--render panel flower
         console.log('loaded-project');
-        console.log(util.inspect(ev));
         ui.showProject(ev.projectConfig);
     });
 }
@@ -49,7 +48,7 @@ function initTestRunEvent() {
         testSuits.add(data);
     });
     mediator.on('handle-all-test-results', function(data) {
-        console.log('all-test-results', data);
+        // console.log('all-test-results', data);
         //--stop-driver
     });
 }

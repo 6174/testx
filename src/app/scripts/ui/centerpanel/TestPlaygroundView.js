@@ -12,11 +12,12 @@ var TestPlaygroundView = Backbone.View.extend({
 		this.listenTo(testSuits, 'add', this.addSuit);	
 	},
 	addSuit: function(suitModel){
+		console.timeEnd('suit');
+		console.log('-----------------addSuitView');
 		var suitView = new TestSuitView({model: suitModel});
 		var node = suitView.render().el;
-		console.log(node, this.$el);
-		$('#TxPlayground').append('<div> I am a joker</div>');
-		// $('#TxPlayground').append(node);
+		// $('#TxPlayground').append('<div> I am a joker</div>');
+		$('#TxPlayground').append(node);
 	}
 });
 

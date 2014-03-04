@@ -9,10 +9,10 @@ var colors = require('colors'),
 (function init() {
     browser = wd.promiseChainRemote();
     browser.on('status', function(info) {
-        console.log(info.cyan);
+        // console.log(info.cyan);
     });
     browser.on('command', function(meth, path, data) {
-        console.log(' > ' + meth.yellow, path.grey, data || '');
+        // console.log(' > ' + meth.yellow, path.grey, data || '');
     });
 })();
 
@@ -41,12 +41,9 @@ function run(config) {
     }).then(function() {
         return browser.title();
     }).then(function(title) {
-        console.log('get-title: ' + title);
-        console.log('combo src: ' + injectTask.combosrc.replace(/\\/g, '\/\/'));
         browser.eval('(function(){var h = document.getElementsByTagName("head").item(0), s = document.createElement("script"); s.src="http://localhost:5051/tmp/combo.js"; h.appendChild(s);})();');
         return browser.eval("window.location.href"); 
     }).then(function(href) {
-        console.log('get-href: ' + href);
     }).fin(function() {
         // return browser.quit();
     }).done();

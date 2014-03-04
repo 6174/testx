@@ -21,7 +21,8 @@ var path        = require('path'),
 })();
 
 function startApp(){
-	require('./scripts/server.js').start();
+	//--服务需要用子进程来实现，避免UI被阻塞
+	require('./scripts/server/serverSpawner.js').spawn();
 	require('./scripts/experiment');
 	require('./scripts/appEvent');
 	require('./scripts/ui/index');
