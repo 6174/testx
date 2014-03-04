@@ -4,7 +4,7 @@
 (function() {
     var socket = io.connect('http://localhost:5051');
     // socket.on('connect', function() {
-        // socket.emit('', 'I am chenxuejia ! haha!');
+    // socket.emit('', 'I am chenxuejia ! haha!');
     // });
     //{emit: function(){}, on: function(){}};//
     var addListener = window.addEventListener ? function(obj, evt, cb) {
@@ -38,7 +38,6 @@
         },
         handleConsoleMessage: function() {}
     };
-    
     window.emit = function emit() {
         Injector.emit.apply(Injector, arguments);
         console.log(arguments);
@@ -46,7 +45,7 @@
     init();
 
     function init() {
-        // takeOverConsole();
+        takeOverConsole();
         interceptWindowOnError();
         var id = 10;
         socket.emit('browser-login', getBrowserName(navigator.userAgent), id)
@@ -82,17 +81,19 @@
             var original = console[method]
             console[method] = function() {
                 var message = stringifyArgs(arguments)
-                var doDefault = Testem.handleConsoleMessage(message)
-                if (doDefault !== false) {
-                    socket.emit(method, message)
-                    if (original && original.apply) {
-                        // Do this for normal browsers
-                        original.apply(console, arguments)
-                    } else if (original) {
-                        // Do this for IE
-                        original(message)
-                    }
+                socket.emit('client-log', {
+                    message: message,
+                    method: method
+                });
+                 
+                if (original && original.apply) {
+                    // Do this for normal browsers
+                    original.apply(console, arguments)
+                } else if (original) {
+                    // Do this for IE
+                    original(message)
                 }
+                 
             }
         }
     }

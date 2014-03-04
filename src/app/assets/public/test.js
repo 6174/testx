@@ -4,6 +4,7 @@ describe("Group1", function() {
    });
    it("sample2", function() {
    	   expect(2).toBe(3);
+   	   console.log('I am log from client');
    });
 });
 

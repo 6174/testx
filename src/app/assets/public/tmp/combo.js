@@ -6007,7 +6007,7 @@ if (typeof define === "function" && define.amd) {
 (function() {
     var socket = io.connect('http://localhost:5051');
     // socket.on('connect', function() {
-        // socket.emit('', 'I am chenxuejia ! haha!');
+    // socket.emit('', 'I am chenxuejia ! haha!');
     // });
     //{emit: function(){}, on: function(){}};//
     var addListener = window.addEventListener ? function(obj, evt, cb) {
@@ -6041,7 +6041,6 @@ if (typeof define === "function" && define.amd) {
         },
         handleConsoleMessage: function() {}
     };
-    
     window.emit = function emit() {
         Injector.emit.apply(Injector, arguments);
         console.log(arguments);
@@ -6049,7 +6048,7 @@ if (typeof define === "function" && define.amd) {
     init();
 
     function init() {
-        // takeOverConsole();
+        takeOverConsole();
         interceptWindowOnError();
         var id = 10;
         socket.emit('browser-login', getBrowserName(navigator.userAgent), id)
@@ -6085,17 +6084,19 @@ if (typeof define === "function" && define.amd) {
             var original = console[method]
             console[method] = function() {
                 var message = stringifyArgs(arguments)
-                var doDefault = Testem.handleConsoleMessage(message)
-                if (doDefault !== false) {
-                    socket.emit(method, message)
-                    if (original && original.apply) {
-                        // Do this for normal browsers
-                        original.apply(console, arguments)
-                    } else if (original) {
-                        // Do this for IE
-                        original(message)
-                    }
+                socket.emit('client-log', {
+                    message: message,
+                    method: method
+                });
+                 
+                if (original && original.apply) {
+                    // Do this for normal browsers
+                    original.apply(console, arguments)
+                } else if (original) {
+                    // Do this for IE
+                    original(message)
                 }
+                 
             }
         }
     }
@@ -6206,6 +6207,7 @@ describe("Group1", function() {
    });
    it("sample2", function() {
    	   expect(2).toBe(3);
+   	   console.log('I am log from client');
    });
 });
 

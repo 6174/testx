@@ -27,7 +27,7 @@ var colors = require('colors'),
 function run(config) {
     // browser.done();
     var injectTask = injector.getTask(config);
-    $('#TxConsole').text(util.inspect(injectTask));
+    // $('#TxConsole').text(util.inspect(injectTask));
     // browser.init({
     //     browserName: config.broswer
     // }).get("http://admc.io/wd/test-pages/guinea-pig.html").elementById('i am a link').click().eval("window.location.href").back().elementByCss('#comments').type('Bonjour!').fin(function() {

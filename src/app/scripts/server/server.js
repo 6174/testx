@@ -40,6 +40,11 @@ function initSocket() {
             hello: 'world'
         });
 
+        socket.on('client-log', function(data){
+            data.ev = 'handle-client-log';
+            process.stdout.write(JSON.stringify(data) + spliter);
+        });
+
         socket.on('spec-done', function(data){
             // mediator.emit('handle-test-result', data);
             data.ev = 'handle-test-result';
