@@ -17,7 +17,7 @@
 		"height": 556,
 		"resizable": false,
 		"position": "center",
-		"frame": false,
+		"frame": true,
 		"show": true
 	},
 	"dependencies": {
