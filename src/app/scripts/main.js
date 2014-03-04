@@ -23,9 +23,9 @@ var path        = require('path'),
 function startApp(){
 	//--服务需要用子进程来实现，避免UI被阻塞
 	require('./scripts/server/serverSpawner.js').spawn();
-	require('./scripts/experiment');
 	require('./scripts/appEvent');
 	require('./scripts/ui/index');
+	require('./scripts/experiment');
 }
 
 function shareMainContext(){
@@ -44,6 +44,10 @@ function shareMainContext(){
 	//--整个app的和两个上下文之间的信息中介者
 	global.mediator = new events.EventEmitter();
 	global.mediator.fire = global.mediator.emit;
+
+	global.uilog = function(data){
+		global.mediator.emit('uilog', data);
+	}
 
 	global.debug = function(msg){
 		console.log(msg);

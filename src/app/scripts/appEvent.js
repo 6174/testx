@@ -7,11 +7,16 @@ var util = require('util'),
     ui = require('./ui/index.js'),
     testSuits = require('./ui/centerpanel/testSuits.js'),
     driver = require('./webdriver/driver.js');
+
 (function init() {
     initProjectEvent();
     initTestRunEvent();
     mediator.on('run-webdriver', function(ev) {
         driver.run(ev.config);
+    });
+
+    mediator.on('uilog', function(data){
+        ui.log(data);
     });
 })()
 /**
@@ -34,7 +39,6 @@ function initProjectEvent() {
     mediator.on('loaded-project', function(ev) {
         //--render panel flower
         console.log('loaded-project');
-        ui.showProject(ev.projectConfig);
     });
 }
 /**

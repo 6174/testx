@@ -6,6 +6,7 @@ var util = require('util'),
 	fs = require('fs-extra'),
 	LeftPanelView = require('./leftpanel/LeftPanelView.js'),
 	CenterPanelView = require('./centerpanel/CenterPanelView.js'),
+	RightPanelView = require('./rightpanel/RightPanelView.js'),
 	NavigationView = require('./NavigationView.js');
 
 var AppView = Backbone.View.extend({
@@ -22,6 +23,7 @@ var AppView = Backbone.View.extend({
 		//--init-child-views
 		this.childviews['navigationView'] = new NavigationView();
 		this.childviews['leftPanelView'] = new LeftPanelView();
+		this.childviews['rightPanelView'] = new RightPanelView();
 		this.childviews['centerPanelView'] = new CenterPanelView();
 		// this.centerPanelView = new CenterPanelView();
 		// this.rightPanelView = new RightPanelView();
@@ -42,11 +44,10 @@ var AppView = Backbone.View.extend({
 			filename: filename
 		}));
 	},
-	showLog: function(){
-
+	log: function(data){
+		this.childviews['rightPanelView'].log(data);
 	},
 	showProject: function(projectConfig){
-		$('#ProjectConfigText').text(util.inspect(projectConfig));
 		mediator.fire('run-webdriver', {
 			config: projectConfig
 		});

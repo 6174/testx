@@ -46,3 +46,12 @@ function testEjs(){
 }
 
 
+function testUilog(){
+	uilog('I am a child');
+	uilog('haha , so what\'s the problem');
+	uilog('I love the world, and I love you more');
+}
+
+testUilog();
+
+
