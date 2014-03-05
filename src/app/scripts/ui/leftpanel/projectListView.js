@@ -1,27 +1,26 @@
 /**
  * project list view
  */
-var ProjectItemView = require('./ProjectItemView'),
-    ProjectList = require('../../project/ProjectCollection.js'),
-    ProjectModel = require('../../project/ProjectModel.js');
-    
+var ProjectItemView = require('./ProjectItemView.js'),
+    projectCollection = require('../../project/projectCollection.js');
+
 var ProjectListView = Backbone.View.extend({
-    el: $('#LeftPanel'),
+    el: '#TxProjectList',
+    els: {},
     template: '',
     events: {},
     initialize: function() {
-        this.listenTo(ProjectList, 'add', this.addOne);
-        this.listenTo(ProjectList, 'reset', this.addAll);
+        this.listenTo(projectCollection, 'add', this.addOne);
+        this.listenTo(projectCollection, 'reset', this.addAll);
     },
-    render: function() {},
     addOne: function(project) {
         var view = new ProjectItemView({
             model: project
         });
-        //append (view.render().el);
+        this.$el.append(view.render().el);
     },
     addAll: function() {
-        ProjectList.each(this.addOne, this);
+        projectCollection.each(this.addOne, this);
     }
 });
 module.exports = ProjectListView;

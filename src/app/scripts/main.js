@@ -3,13 +3,13 @@
  * @desc: 入口文件
  *
  */
-
+//--@note: 这里require的路径根据脚本所在的html的路径来计算的，
+//--这里require的模块内require的路径按node方式执行环境为在node
 var path        = require('path'),
     fs          = require('fs'),
     util		= require('util'),
     events      = require('events'),
-    //@note: require的路径根据脚本所在的html的路径来计算的，执行环境为在node
-    FileManager = require('./scripts/file/FileManager');
+    fileManager = require('./scripts/FileManager.js');
 
 //--入口函数
 (function init(){

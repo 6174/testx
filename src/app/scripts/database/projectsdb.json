@@ -1,0 +1,11 @@
+[
+  {
+    "broswer": "chrome",
+    "testFramework": "jasmine",
+    "url": "http://localhost:80",
+    "proxy": true,
+    "dirname": "C:\\Users\\Administrator\\Desktop\\sfa",
+    "name": "project-name",
+    "currentProject": false
+  }
+]

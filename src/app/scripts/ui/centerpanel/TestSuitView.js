@@ -31,7 +31,7 @@ function getSuitTemplateFunc(){
 	var src = path.join(__dirname, '../../../templates/test-suit/', 'suit.ejs');
 	var str = fs.readFileSync(src);
 
-	return window.hehe = ejs.compile(String(str));
+	return ejs.compile(String(str));
 };
 
 function getSpecTemplateFunc(){

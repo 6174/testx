@@ -10,7 +10,7 @@ var util = require('util'),
 	NavigationView = require('./NavigationView.js');
 
 var AppView = Backbone.View.extend({
-	el: $('#TxApp'),
+	el: '#TxApp',
 	els: {},
 	childviews: {},
 	events: {
@@ -47,10 +47,11 @@ var AppView = Backbone.View.extend({
 	log: function(data){
 		this.childviews['rightPanelView'].log(data);
 	},
-	showProject: function(projectConfig){
-		mediator.fire('run-webdriver', {
-			config: projectConfig
-		});
+	addProject: function(projectConfig){
+		// this.childviews['leftPanelView']
+		// mediator.emit('run-webdriver', {
+		// 	config: projectConfig
+		// });
 	}
 });
 

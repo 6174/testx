@@ -1,12 +1,19 @@
 /**
  * mediator event listener
- * mediator负责全局事件的监听， 主要目的是让模块解耦
+ * mediator负责全局事件的监听， 负责让ui - model - backend 各部分解耦
  */
 var util = require('util'),
-    projectManager = require('./project/projectManager.js'),
+
+    //--global ui appview
     ui = require('./ui/index.js'),
+
+    //--model collections
     testSuits = require('./ui/centerpanel/testSuits.js'),
+    projectCollection = require('./project/projectCollection.js'),
+
+    //--broser webdriver
     driver = require('./webdriver/driver.js');
+
 
 (function init() {
     initProjectEvent();
@@ -24,22 +31,20 @@ var util = require('util'),
  */
 function initProjectEvent() {
     mediator.on('add-project', function(ev) {
-        projectManager.addProject(ev.value);
+        projectCollection.addProjectBySrc(ev.value);
     });
+
     mediator.on('loading-project', function(ev) {
         console.log('loading-project');
     });
+
     mediator.on('loading-project-error', function(ev) {
         console.log('Error:' + ev.error);
     });
+
     mediator.on('loading-project-info', function(ev) {
         //--loading project info
         console.log('info: ' + ev.info);
-    });
-    mediator.on('loaded-project', function(ev) {
-        //--render panel flower
-        console.log('loaded-project');
-        ui.showProject(ev.projectConfig);
     });
 }
 /**

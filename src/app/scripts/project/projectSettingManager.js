@@ -8,6 +8,7 @@ var path = require('path'),
 var defaultConfig = {
 	broswer: 'chrome',
 	testFramework: 'jasmine',
+	url: 'http://localhost:80',
 	proxy: true
 }
 
@@ -43,5 +44,5 @@ function parseProjectConfig(dirname){
 }
 
 module.exports = {
-	parseProjectConfig: parseProjectConfig
+	getProjectSetting: parseProjectConfig
 };
