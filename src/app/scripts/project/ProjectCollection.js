@@ -48,7 +48,9 @@ var ProjectCollection = Backbone.Collection.extend({
 		});
 	},
 	addProjectBySrc: function(src){
-		mediator.emit('loading-project');
+		mediator.emit('loading-project', {
+			src: src
+		});
 		if(this.exists(src)){
 			mediator.emit('loading-project-info', {
 				info: 'project already exists!'

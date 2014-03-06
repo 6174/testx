@@ -5,6 +5,7 @@ var fs = require('fs-extra'),
 	path = require('path'),
 	ejs = require('ejs');
 
+
 var TestSuitView = Backbone.View.extend({
 	tagName: 'div',
 	className: 'tx-test-suit',

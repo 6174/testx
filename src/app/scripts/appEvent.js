@@ -51,17 +51,23 @@ function initProjectEvent() {
  * @desc: 初始化测试运行过程中的全局事件
  */
 function initTestRunEvent() {
-    mediator.on('handle-test-result', function(data) {
-        testSuits.addSpec(data);
+    mediator.on('handle-client-log', function(data){
+        ui.log(data.message);
     });
+
+    mediator.on('handle-tests-start', function(){
+    });
+
     mediator.on('handle-test-suit', function(data) {
         testSuits.add(data);
     });
+
+    mediator.on('handle-test-result', function(data) {
+        testSuits.addSpec(data);
+    });
+    
     mediator.on('handle-all-test-results', function(data) {
         // console.log('all-test-results', data);
         //--stop-driver
-    });
-    mediator.on('handle-client-log', function(data){
-        ui.log(data.message);
     });
 }

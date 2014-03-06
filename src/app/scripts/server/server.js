@@ -45,15 +45,22 @@ function initSocket() {
             process.stdout.write(JSON.stringify(data) + spliter);
         });
 
-        socket.on('spec-done', function(data){
-            // mediator.emit('handle-test-result', data);
-            data.ev = 'handle-test-result';
+        socket.on('tests-start', function(){
+            var data = {
+                ev: 'handle-tests-start'
+            };
             process.stdout.write(JSON.stringify(data) + spliter);
         });
 
         socket.on('suit-start', function(data){
             // mediator.emit('handle-test-suit', data);
             data.ev = 'handle-test-suit';
+            process.stdout.write(JSON.stringify(data) + spliter);
+        });
+
+        socket.on('spec-done', function(data){
+            // mediator.emit('handle-test-result', data);
+            data.ev = 'handle-test-result';
             process.stdout.write(JSON.stringify(data) + spliter);
         });
 

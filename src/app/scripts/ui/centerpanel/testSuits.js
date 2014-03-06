@@ -41,9 +41,14 @@ var TestSuitCollection = Backbone.Collection.extend({
     model: TestSuitModel,
     initialize: function() {
         this.hashedSuits = {};
+        this.specCount = 0;
+        this.pendingCount = 0;
+        this.errorCount = 0;
+        this.passCount = 0;
+
         this.on('add', function(model) {
-        	console.time('suit');
-        	console.log('-----------------addSuitModel');
+            console.time('suit');
+            console.log('-----------------addSuitModel');
             this.hashedSuits[model.get('fullName')] = model;
         });
     },
@@ -54,6 +59,39 @@ var TestSuitCollection = Backbone.Collection.extend({
             throw new Error('no suits');
         }
         suit.addSpec(specConfig);
+        this.increaseSpec(specConfig);
+    },
+    increaseSpec: function(specConfig){
+        console.log(specConfig);
+        this.specCount ++;
+
+        if(specConfig.failed > 0){
+            this.errorCount += 1;
+            mediator.emit('spec-falied');
+        }
+
+        if(specConfig.pending > 0){
+            this.pendingCount += 1;
+        }
+
+        if(specConfig.passed > 0){
+            this.passCount += 1;
+        }
+
+        mediator.emit('increase-spec', {
+            specCount: this.specCount,
+            passCount: this.passCount,
+            errorCount: this.errorCount,
+            pendingCount: this.pendingCount
+        });
+    }, 
+    resetTest: function(){
+        this.specCount = 0;
+        this.passCount = 0;
+        this.errorCount = 0;
+        this.pendingCount = 0;
+        this.hashedSuits = {};
+        this.reset();
     }
 });
 var testSuits = new TestSuitCollection();
