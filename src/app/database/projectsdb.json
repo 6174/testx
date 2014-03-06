@@ -1,0 +1,12 @@
+[
+  {
+    "browser": "chrome",
+    "url": "http://www.baidu.com",
+    "testFramework": "jasmine",
+    "broswer": "chrome",
+    "proxy": true,
+    "dirname": "C:\\Users\\Administrator\\Desktop\\sfa",
+    "name": "project-name",
+    "currentProject": false
+  }
+]

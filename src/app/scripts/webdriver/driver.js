@@ -33,17 +33,13 @@ function run(config) {
     // }).get("http://admc.io/wd/test-pages/guinea-pig.html").elementById('i am a link').click().eval("window.location.href").back().elementByCss('#comments').type('Bonjour!').fin(function() {
     //     return browser.quit();
     // }).done();
-
+    console.log(config);
     browser.init({
-        browserName: 'chrome'
+        browserName:  config.browser || 'chrome'
     }).then(function() {
-        return browser.get("http://admc.io/wd/test-pages/guinea-pig2.html");
+        return browser.get( config.url || "http://admc.io/wd/test-pages/guinea-pig2.html");
     }).then(function() {
-        return browser.title();
-    }).then(function(title) {
         browser.eval('(function(){var h = document.getElementsByTagName("head").item(0), s = document.createElement("script"); s.src="http://localhost:5051/tmp/combo.js"; h.appendChild(s);})();');
-        return browser.eval("window.location.href"); 
-    }).then(function(href) {
     }).fin(function() {
         // return browser.quit();
     }).done();

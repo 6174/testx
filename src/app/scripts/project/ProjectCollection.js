@@ -21,6 +21,12 @@ var ProjectModel = Backbone.Model.extend({
 	},
 	toggle: function(){
 		this.set('currentProject', !this.get('currentProject'));
+	},
+	updateFromSettingFile: function(){
+		var setting = projectSettingManager.getProjectSetting(this.get('dirname'));
+		for(attr in setting){
+			this.set(attr, setting[attr]);
+		}
 	}
 });
 
@@ -36,7 +42,8 @@ var ProjectCollection = Backbone.Collection.extend({
 		});
 
 		this.on('remove', function(model){
-			delete this.hashedProjects[model.dirname];
+			// window.alert('remove project from collection');
+			delete this.hashedProjects[model.get('dirname')];
 			projectDbManager.save(this.models);
 		});
 	},

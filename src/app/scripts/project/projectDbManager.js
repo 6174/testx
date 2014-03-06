@@ -4,7 +4,7 @@
 var path = require('path'),
     fs = require('fs-extra');
 
-var dbsrc = path.join(__dirname, '../database/', 'projectsdb.json');
+var dbsrc = path.join(__dirname, '../../database/', 'projectsdb.json');
 
 function save(data, handler, thisObj) {
     fs.outputJson(dbsrc, data, function(err) {
