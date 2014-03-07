@@ -9,6 +9,7 @@ var defaultConfig = {
 	broswer: 'chrome',
 	testFramework: 'jasmine',
 	url: 'http://localhost:80',
+	name: 'default',
 	proxy: true
 }
 
@@ -29,11 +30,15 @@ function parseProjectConfig(dirname){
 
 	try {
 		data = JSON.parse(str); 
+		if(!data.name){
+			data.name = dirname.split(/\\|\//g).pop();
+			if(data.name == '') data.name = 'default-asd';
+		}
 	} catch (err) {
 		mediator.emit('loading-project-error', {
-			error: 'json format error!'
+			error: 'json format error!: ' + err.message
 		});
-		return defaultConfig;
+		throw err;
 	}
 
 	for(attr in defaultConfig){

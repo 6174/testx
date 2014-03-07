@@ -12,5 +12,11 @@
 <!-- test spec report -->
 <tr class="report" id="Report-<%= id %>">
   <td colspan="2">
+    <% items.forEach(function(item){ %>
+      <div calss='failedItem'> 
+        <p> <%= item.message %> </p>
+        <p> <%= item.stack %>  </p>
+      </div>
+    <% }) %>
   </td>
 </tr>
