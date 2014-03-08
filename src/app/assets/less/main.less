@@ -2,7 +2,7 @@
 
 @support-old-ie: false;
 @default-font-size: 14px;
-
+@purple: rgb(52, 7, 88);
 
 html{
 	overflow: hidden;
@@ -55,6 +55,7 @@ button:focus, .btn:focus{
  * nav bar
  */
 .navbar{
+	min-height: 36px;
 	background-color: rgba(255,255,255,0.97);
 	-webkit-box-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
 	-moz-box-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
@@ -70,10 +71,15 @@ button:focus, .btn:focus{
 	}
 	li>a{
 		color: inherit !important;
-		font-weight: bold;
+		padding: 7px 15px;
 	}
+
+	.navbar-brand{
+		padding: 7px 12px;
+	}
+
 	.navbar-right>li{
-		height: 50px;
+		height: 34px;
 		a{
 			position: relative;
 			top: 3px;
@@ -108,6 +114,15 @@ button:focus, .btn:focus{
 	border-right: 1px solid #e6e6e6;
 	li>a{
 		border-radius: 0px;
+		padding: 6px 10px;
+		border-bottom: 1px solid rgb(236, 236, 236);
+		color: #333;
+	}
+	li.active > a, li.active > a:hover{
+		background-color: @purple;
+	}
+	li.active > a > .badge{
+		color: @purple;
 	}
 }
 .center-panel{
@@ -116,6 +131,9 @@ button:focus, .btn:focus{
 	width:  494px;
 	.control{
 		margin-bottom: 5px;
+	}
+	.panel-heading{
+		padding: 5px;
 	}
 	.panel-body{
 		padding-top: 0px;
@@ -159,7 +177,7 @@ button:focus, .btn:focus{
 	}
 
 	.nav li.active a{
-		background: rgb(52, 7, 88);
+		background-color: @purple;
 		color: #F0F0F0;
 	}
 
