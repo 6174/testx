@@ -45,6 +45,13 @@ function initSocket() {
             process.stdout.write(JSON.stringify(data) + spliter);
         });
 
+        //-todo: 改成error
+        socket.on('client-error', function(data){
+            data.ev = 'handle-client-log';
+            data.message = data.message + ' from: ' + data.url + ', at: ' + data.line;
+            process.stdout.write(JSON.stringify(data) + spliter);
+        });
+
         socket.on('tests-start', function(){
             var data = {
                 ev: 'handle-tests-start'

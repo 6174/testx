@@ -40,7 +40,6 @@
     };
     window.emit = function emit() {
         Injector.emit.apply(Injector, arguments);
-        console.log(arguments);
     }
     init();
 
@@ -100,9 +99,13 @@
 
     function interceptWindowOnError() {
         window.onerror = function(msg, url, line) {
-            if (typeof msg === 'string' && typeof url === 'string' && typeof line === 'number') {
-                socket.emit('top-level-error', msg, url, line)
-            }
+            // if (typeof msg === 'string' && typeof url === 'string' && typeof line === 'number') {
+            socket.emit('client-error',{
+                message: msg,
+                url: url,
+                line: line
+            });
+            // }
         }
     }
 

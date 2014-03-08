@@ -36,6 +36,7 @@ function shareMainContext(){
 	global.mainWindow = gui.Window.get();
 
 	global.$ = $;
+	global.ace = ace;
 	global.Backbone = Backbone;
 	global._ = _;
 

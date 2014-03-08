@@ -1,11 +1,33 @@
 <div id="TxRightPanel" class="right-panel panel panel-default">
   <div class="panel-heading">
-    	<span>console</span>
-		  <button id="TxConsoleClearTrigger" class="btn btn-clear pull-right" type="button">
-      clear</button>
+    <button id="TxConsoleClearTrigger" class="btn btn-clear pull-right" type="button">
+    clear</button> 
+    <ul id='Tab' class="nav clearfix">
+      <li class="active">
+      	<a href="#Tab_Console" data-toggle="tab">console</a>
+      </li>
+      <li>
+      	<a href="#Tab_CodeViewer" data-toggle="tab">&lt; / &gt;</a>
+      </li>
+    </ul>
   </div>
-  <div class="panel-body custom-scrollbar">
-  	<div id="TxConsole">
-  	</div>
+  <div class="panel-body">
+	<!-- Tab panes -->
+	<div class="tab-content">
+	  <div class="tab-pane active" id="Tab_Console">
+	  	<div class="custom-scrollbar">
+		    <div id="TxConsole" class="console"></div>
+	  	</div>
+	  </div>
+
+	  <div class="tab-pane" id="Tab_CodeViewer">
+		<div id="TxCodeViewer" class="ace_editor">
+			function foo(items) {
+			    var x = "All this is syntax highlighted";
+			    return x;
+			}
+		</div>
+	  </div>
+	</div>
   </div>
 </div>
