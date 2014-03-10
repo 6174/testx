@@ -1,7 +1,9 @@
 /**
  * Right panelView
  */
-var util = require('util');
+var util = require('util'),
+	hljs = require('highlight.js');
+
 var RightPanelView = Backbone.View.extend({
 	el: '#TxRightPanel',
 	events: {
@@ -50,12 +52,9 @@ var RightPanelView = Backbone.View.extend({
 		}
 	},
 	log: function(data){
-		var node = $('<p class="log-line"></p>')
-		node.text(util.inspect(data));
+		var node = $('<p class="log-line"></p>');
+		node.html('> ' + hljs.highlight('javascript', data).value);			
 		this.logEl.prepend(node);
-	},
-	showCode: function(data){
-
 	},
 	clear: function(){
 		console.log('asdfasdf');
