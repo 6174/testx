@@ -12,6 +12,7 @@ var RightPanelView = Backbone.View.extend({
 		this.initEditor();
 	},
 	initEditor: function(){
+	    var self = this;
 		var editor = ace.edit("TxCodeViewer");
 	    editor.setPrintMarginColumn(false);
 	    editor.setShowFoldWidgets(false);
@@ -19,9 +20,34 @@ var RightPanelView = Backbone.View.extend({
 	    editor.getSession().setTabSize(2);
 	    // editor.renderer.setShowGutter(false);
 	    editor.getSession().setUseWorker(false);
-	    editor.setReadOnly(true);
-	    this.editor = editor;
+	    // editor.setReadOnly(true);
+	    self.editor = editor;
 	    window.editor = editor;
+	    var code = '';
+	    mediator.on('combo-script', function(ev){
+	    	code = ev.code;
+	    });
+
+	    $('body').delegate('.script-view-link', 'click', function(ev){
+	    	var line = $(this).data('line'),
+	    		row = $(this).data('row');
+	    	// console.log('click', line, row);
+	    	self.showCodeViewPanel({
+	    		code: code,
+	    		line: line,
+	    		row: row
+	    	});
+	    });
+	},
+	showCodeViewPanel: function(conf){
+		conf = conf || {};
+		this.$('#TabCodeViewer').tab('show');
+		if(conf.code) {
+			this.editor.setValue(conf.code);
+		}
+		if(conf.line) {
+			this.editor.gotoLine(Number(conf.line));
+		}
 	},
 	log: function(data){
 		var node = $('<p class="log-line"></p>')

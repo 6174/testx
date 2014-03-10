@@ -18,7 +18,7 @@ describe('TodoModel', function(){
 	it('instance model with config', function(){
 		var title = 'title from config';
 		model = new app.TodoModel({title: title});
-		expect(model.get('title')).toEqual(title);
+		expect(model.get('title')).toNotEqual(title);
 	});
 
 	it('after toggle called complete should be toggle', function(){

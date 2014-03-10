@@ -14,6 +14,26 @@ var TestSpecModel = Backbone.Model.extend({
             name: 'spec-name',
             items: []
         };
+    },
+    initialize: function(arguments){
+        this.addHrefLinkTospecConfig();
+    },
+    addHrefLinkTospecConfig: function(){
+        var items = this.get('items');
+        // http://localhost:5051/tmp/specs.js:519:35
+        var reg = /\((http.*?specs\.js).(\d.*?):(\d.*?)\)/gi;
+        items.forEach(function(it){
+            var str = it.stack, links;
+
+            links = str.match(reg);
+            links.forEach(function(link){
+                var groups = /\((http.*?specs\.js).(\d.*?):(\d.*?)\)/gi.exec(link) || [];
+                var line = groups[2];
+                var row  = groups[3];
+                str = str.replace(link, '<a href="#" class="script-view-link" data-line="' + line + '" data-row="' + row+ '">' + link + '<\/a>');
+            });
+            it.stack = str;
+        });
     }
 });
 

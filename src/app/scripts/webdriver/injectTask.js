@@ -61,17 +61,17 @@ function comboScripts(task) {
     });
     str += getScript(task.socketIo);
     str += getScript(task.injector);
-    //-- test scripts
     task.scripts.forEach(function(item) {
         str += getScript(item);
     });
-    //--exec trigger
     str += getScript(task.execTrigger);
-    task.combo = str;
-    task.combosrc = path.join(__dirname, '../../assets/public/tmp/' + "combo.js");
-    fs.writeFile(task.combosrc, str, function(e) {
-        if (e) throw e;
+    task.testScripts = str;
+    task.testScriptsSrc = path.join(__dirname, '../../assets/public/tmp/' + "specs.js");
+    mediator.emit('combo-script', {
+        src: task.testScriptsSrc,
+        code: str
     });
+    fs.writeFileSync(task.testScriptsSrc, str, 'utf-8');
 }
 
 function getScript(src) {

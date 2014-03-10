@@ -17,7 +17,7 @@
       <% items.forEach(function(item){ %>
         <div calss='failedItem'> 
           <p> <%= item.message %> </p>
-          <p> <%= item.stack %>  </p>
+          <p class="stack"> <%- item.stack %>  </p>
         </div>
       <% }) %>
     </td>
