@@ -2,10 +2,15 @@
 
 @support-old-ie: false;
 @default-font-size: 14px;
-@purple: rgb(52, 7, 88);
+@purple: #004080;
+@dark-purple: #400040;
+@border-gray: rgb(236, 236, 236);
+
 
 html{
 	overflow: hidden;
+	background-color: #fafafa;
+	font-size: 13px;
 }
 
 /**
@@ -45,11 +50,6 @@ html{
 .title{
 	color: red;
 	margin-bottom: 20px;
-}
-
-.navbar{
-	margin-bottom: 0px;
-	border-radius: 0px;
 }
 
 button:focus, .btn:focus{
@@ -95,12 +95,13 @@ button:focus, .btn:focus{
 /**
  * nav bar
  */
-.navbar{
+.tx-contaniner .navbar{
+	border-radius: 0px;
 	min-height: 36px;
-	background-color: rgba(255,255,255,0.97);
-	-webkit-box-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
-	-moz-box-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
-	box-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
+	background-color: #eee;
+	border: 1px solid @border-gray;
+	margin-bottom: 1px;
+	-webkit-box-shadow: none;
 	li:hover {
 		color: #808080;
 		text-decoration: none;
@@ -108,11 +109,19 @@ button:focus, .btn:focus{
 	}
 	li{
 		color: #777777;
-		border-left: 1px solid #e5e5e5;
 	}
-	li>a{
-		color: inherit !important;
+
+	li > a{
+		color: #232323;
 		padding: 7px 15px;
+		border-left: 1px solid transparent;
+		border-right: 1px solid transparent;
+	}
+
+	li > a:hover{
+		background: rgba(0, 0, 0, 0.04);
+		border-left: 1px solid #ccc;
+		border-right: 1px solid #ccc;
 	}
 
 	.navbar-brand{
