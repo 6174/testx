@@ -4,7 +4,7 @@ describe('TodoModel', function(){
 	beforeEach(function() {
 		expect(app).not.toBe(null);
 	    model = new app.TodoModel();
-	    console.log(model);
+	    console.log('model: ', model);
 	});
 
 	it('model should not be null', function(){

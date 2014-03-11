@@ -8,6 +8,40 @@ html{
 	overflow: hidden;
 }
 
+/**
+ * main frame structure
+ */
+.tx-content{
+	height: 500px;	
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	justify-content: space-around;
+	.tx-nav{
+		-webkit-flex-basis: 145px;
+		-webkit-flex-grow: auto;
+		padding-top: 3px;
+		padding-bottom: 10px;
+		height: 100%; 
+	}
+	.tx-dashboard{
+		-webkit-flex-grow: 1;
+		height: 100%;
+		.center-panel{
+			width: 494px;
+			height: 100%;
+		}
+		.right-panel{
+			width: 261px;
+			height: 100%;
+		}
+	}
+}
+
+
+/**
+ * common ui elements
+ */
 .title{
 	color: red;
 	margin-bottom: 20px;
@@ -28,9 +62,10 @@ button:focus, .btn:focus{
 	border: 1px solid #a6a6a6;
 	outline: 0 none;
 }
+
 .btn{
 	display: inline-block;
-	padding: 3px 8px;
+	padding: 0px 4px;
 	margin-bottom: 0;
 	font-size: 14px;
 	line-height: 20px;
@@ -48,6 +83,12 @@ button:focus, .btn:focus{
 .log-line{
 	border-bottom: solid 1px rgb(238, 238, 238);
 	margin-bottom: 8px;
+}
+
+.splitter-bar {
+	width: 5px;
+	background: #aaa;
+	background: url(../img/splitter-v.png) 1px 50% no-repeat;
 }
 
 
@@ -92,26 +133,14 @@ button:focus, .btn:focus{
 	}
 }
 
-
 .panel{
-	position: absolute;
-	height: 500px;
-	padding-top: 3px;
-	padding-bottom: 10px;
-	background-color: #eee;
-	border: none;
 	border-radius: 0px;
 }
-
 /**
  * left-panel
  */
 .left-panel{
-	left: 0px;
-	top: 0px;
-	width: 145px;
 	background-color: #fafafa;
-	border-right: 1px solid #e6e6e6;
 	li>a{
 		border-radius: 0px;
 		padding: 6px 10px;
@@ -125,15 +154,29 @@ button:focus, .btn:focus{
 		color: @purple;
 	}
 }
+
 .center-panel{
-	top: 0px;
-	left:145px;
-	width:  494px;
 	.control{
 		margin-bottom: 5px;
 	}
 	.panel-heading{
 		padding: 5px;
+		height: 31px;
+		position: relative;
+		overflow: hidden;
+		.run-info{
+			position: absolute;
+			top: 3px;
+			left: 2px;
+			height: 20px;
+			word-break: break-all;
+			width: 300px;
+		}
+		.btn-run{
+			position: absolute;
+			top: 2px;
+			right: 4px;
+		}
 	}
 	.panel-body{
 		height: 92%;
@@ -164,8 +207,6 @@ button:focus, .btn:focus{
 }
 
 .right-panel{
-	right: 0px;
-	width: 261px;
 	.panel-heading{
 		padding: 1px;
 		padding-bottom: 0px;
@@ -197,10 +238,14 @@ button:focus, .btn:focus{
 	.ace_editor{
 		height: 452px;
 	}
-
-	.btn-clear{
+	
+	.panel-heading{
 		position: relative;
-		bottom: 1px;
+		.btn-clear{
+			position: absolute;
+			top: 2px;
+			right: 2px;
+		}
 	}
 }
 

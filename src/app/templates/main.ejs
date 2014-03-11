@@ -1,8 +1,10 @@
 <% include header %>
 <!-- content section -->
 <!-- *************** -->
-<section class="tx-content clearfix" style="position: relative;">
+<section class="tx-content">
 	<% include left-panel %>
-	<% include center-panel %>
-	<% include right-panel %>
+	<div id="TxDashbordVsplitter" class="tx-dashboard">
+		<% include center-panel %>
+		<% include right-panel %>
+	</div>
 </section>
