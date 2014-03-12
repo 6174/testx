@@ -22,4 +22,5 @@
 * 无法开启多个实例， 因为服务端口被占用， -- 只实例化一个应用
 * 错误信息的modal弹出框
 * project 添加过后自动选择该项目， project 删除过后如果是当前项目， 显示about信息 
+* [bug]添加没有config.json的project时， 在project列表间来回选择会出现异常错误
 

@@ -1,12 +1,1 @@
-[
-  {
-    "browser": "chrome",
-    "url": "http://www.baidu.com",
-    "testFramework": "jasmine",
-    "name": "my-test",
-    "broswer": "chrome",
-    "proxy": true,
-    "dirname": "C:\\Users\\Administrator\\Desktop\\my-test",
-    "isCurrentProject": true
-  }
-]
+[]
