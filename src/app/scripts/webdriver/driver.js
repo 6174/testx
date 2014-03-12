@@ -36,10 +36,11 @@ function run(config) {
         }).then(function() {
             return browser.get( config.url || "http://admc.io/wd/test-pages/guinea-pig2.html");
         }).then(function() {
-            // document.getElementsByTagName("body").item(0)
             browser.eval('(function(){var h = document.body, s = document.createElement("script"); s.src="http://localhost:5051/tmp/specs.js"; h.appendChild(s);})();');
         }).fin(function() {
             mediator.once('handle-all-test-results', function(){
+                console.log('config', config);
+                if(config['browserQuit'] === 'false') return;
                 browser.quit();
             });
         }).done();

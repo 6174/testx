@@ -30,6 +30,9 @@ function getTaskStub() {
 function setJasmineTask(task) {
     var jasminePath = path.join(publicPath, 'jasmine2/')
     task.libs = task.libs.concat([
+        path.join(publicPath, '../libs/', 'jquery.js'),
+        path.join(publicPath, '../libs/', 'jquery.simulate.js'),
+        path.join(publicPath, '../libs/', 'x.js'),
         path.join(jasminePath, 'jasmine.js'),
         path.join(jasminePath, 'boot.js'),
         path.join(jasminePath, 'adapter.js')

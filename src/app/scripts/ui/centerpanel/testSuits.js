@@ -82,7 +82,7 @@ var TestSuitCollection = Backbone.Collection.extend({
         this.increaseSpec(specConfig);
     },
     increaseSpec: function(specConfig){
-        console.log(specConfig);
+        // console.log(specConfig);
         this.specCount ++;
 
         if(specConfig.failed > 0){
