@@ -45,6 +45,10 @@ var CenterPanelView = Backbone.View.extend({
             self.danger();
         });
 
+        mediator.on('show-about', function(ev){
+            self.$('#TxCenterPanelNotifier').show();
+        });
+
     },
     success: function(){
         this.$el.removeClass('panel-danger panel-default');

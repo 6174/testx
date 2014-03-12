@@ -18,6 +18,7 @@ var ProjectListView = Backbone.View.extend({
             model: project
         });
         this.$el.append(view.render().el);
+        view.showProject();
     },
     addAll: function() {
         projectCollection.each(this.addOne, this);

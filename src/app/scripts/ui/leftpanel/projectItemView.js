@@ -26,12 +26,17 @@ var ProjectItemView = Backbone.View.extend({
     	$('.project-item').removeClass('active');
     	this.$el.addClass('active');
         this.model.updateFromSettingFile();
+        this.model.setCurrentProject();
         mediator.emit('show-project', {
             config: this.model.toJSON()
         });
     },
     deleteProject: function(ev) {
         ev.stopPropagation();
+        if(this.model.get('isCurrentProject')){
+            mediator.emit('show-about');
+        }
+
         this.model.destroy();
         return false;
     }

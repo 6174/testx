@@ -5,7 +5,9 @@ var	path = require('path'),
 	projectSettingManager = require('./projectSettingManager.js'),
 	projectDbManager = require('./projectDbManager.js');
 
-var ProjectModel = Backbone.Model.extend({
+var ProjectModel, ProjectCollection, collection;
+
+ProjectModel = Backbone.Model.extend({
 	defaults: function(){
 		return {
 			dirname: 'directory',
@@ -13,14 +15,20 @@ var ProjectModel = Backbone.Model.extend({
 			name: 'project-name',
 			url: 'http://localhost:80',
 			testFramework: 'jasmine',
-			currentProject: false
+			isCurrentProject: false
 		};
 	},
 	initialize: function(){
 		this.on('change', function(){});
 	},
 	toggle: function(){
-		this.set('currentProject', !this.get('currentProject'));
+		this.set('isCurrentProject', !this.get('isCurrentProject'));
+	},
+	setCurrentProject: function(){
+		collection.forEach(function(model){
+			model.set('isCurrentProject', false);
+		});
+		this.set('isCurrentProject', true);
 	},
 	updateFromSettingFile: function(){
 		var setting = projectSettingManager.getProjectSetting(this.get('dirname'));
@@ -30,7 +38,7 @@ var ProjectModel = Backbone.Model.extend({
 	}
 });
 
-var ProjectCollection = Backbone.Collection.extend({
+ProjectCollection = Backbone.Collection.extend({
 	model: ProjectModel,
 	initialize: function(){
 		this.hashedProjects = {};
@@ -86,6 +94,7 @@ var ProjectCollection = Backbone.Collection.extend({
     }
 });
 
+collection = new ProjectCollection();
 
 
-module.exports = new ProjectCollection();
+module.exports = collection;
