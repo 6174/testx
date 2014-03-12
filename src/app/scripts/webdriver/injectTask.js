@@ -11,8 +11,8 @@ function packageTask(projectConfig, done) {
     setJasmineTask(task, projectConfig);
 
     walkThroghTestDirectory(task, projectConfig, function(){
-	    comboScripts(task);
-	    done(task);
+        comboScripts(task);
+        done(task);
     });
     return task;
 }
@@ -41,19 +41,19 @@ function setJasmineTask(task) {
 }
 
 function walkThroghTestDirectory(task, projectConfig, done) {
-	walk(projectConfig.dirname, function (err, results){
-		if(err){
-			throw err;
-		}
-		results.forEach(function (filename){
-			if(path.extname(filename) == '.js'){
-				task.scripts.push(filename);
-			}
-		});
-		done();
-	    // var testScript = path.join(publicPath, 'test.js');
-	    // task.scripts.push(testScript);
-	});
+    walk(projectConfig.dirname, function (err, results){
+        if(err){
+            throw err;
+        }
+        results.forEach(function (filename){
+            if(path.extname(filename) == '.js'){
+                task.scripts.push(filename);
+            }
+        });
+        done();
+        // var testScript = path.join(publicPath, 'test.js');
+        // task.scripts.push(testScript);
+    });
 }
 
 function comboScripts(task) {
@@ -75,6 +75,11 @@ function comboScripts(task) {
         code: str
     });
     fs.writeFileSync(task.testScriptsSrc, str, 'utf-8');
+}
+
+function  uglifySourceCode(origCode){
+    // UglifyJS = require("uglify-js"),
+    // return UglifyJS.minify(origCode, {fromString: true});
 }
 
 function getScript(src) {

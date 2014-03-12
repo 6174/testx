@@ -31,6 +31,7 @@ function run(config) {
     var injectTask = injector.packageTask(config, function(task){
         console.timeEnd('package');
         console.log('package done')
+        somethong.haha;
         browser.init({
             browserName:  config.browser || 'chrome'
         }).then(function() {

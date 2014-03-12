@@ -61,6 +61,7 @@ function listenAndHandleError(){
 	    var message = '---uncaughtExceptionsed---\n' + err.stack + '\n\n';
 	    // fs.appendFile(FileManager.errorLogFile, message);
 	    console.log(message);
+	    global.mediator && global.mediator.emit('ui-error', message);
 	});
 
 	// window.addEventListener('error', function (err) {

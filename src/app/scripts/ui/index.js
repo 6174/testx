@@ -7,7 +7,8 @@ var util = require('util'),
     LeftPanelView = require('./leftpanel/LeftPanelView.js'),
     CenterPanelView = require('./centerpanel/CenterPanelView.js'),
     RightPanelView = require('./rightpanel/RightPanelView.js'),
-    NavigationView = require('./NavigationView.js');
+    NavigationView = require('./NavigationView.js'),
+    ErrorModalView = require('./ErrorModalView.js');
 var AppView = Backbone.View.extend({
     el: '#TxApp',
     els: {},
@@ -23,6 +24,7 @@ var AppView = Backbone.View.extend({
         this.childviews['leftPanelView'] = new LeftPanelView();
         this.childviews['rightPanelView'] = new RightPanelView();
         this.childviews['centerPanelView'] = new CenterPanelView();
+        this.childviews['errorModalView'] = new ErrorModalView();
         // this.centerPanelView = new CenterPanelView();
         // this.rightPanelView = new RightPanelView();
         //--init-ui-els
