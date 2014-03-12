@@ -2,24 +2,33 @@
 
 @support-old-ie: false;
 @default-font-size: 14px;
-@purple: #004080;
+@purple: #008080;
 @dark-purple: #400040;
 @border-gray: rgb(236, 236, 236);
 
 
 html{
 	overflow: hidden;
-	background-color: #fafafa;
 	font-size: 13px;
 }
 
 /**
  * main frame structure
  */
-.tx-content{
-	height: 500px;	
+.tx-container{
 	display: -webkit-flex;
-	display: flex;
+	-webkit-flex-flow: column wrap;
+	.tx-menu{
+		-webkit-flex-basis: 36px;
+		-webkit-flex-grow: auto;
+	}
+
+	.tx-content{
+		-webkit-flex-grow: 1;
+	}
+}
+.tx-content{
+	display: -webkit-flex;
 	-webkit-flex-flow: row wrap;
 	justify-content: space-around;
 	.tx-nav{
@@ -92,15 +101,19 @@ button:focus, .btn:focus{
 }
 
 
+.tx-container{
+	background-color: #fafafa;
+}
+
 /**
  * nav bar
  */
-.tx-contaniner .navbar{
+.tx-container .navbar{
 	border-radius: 0px;
 	min-height: 36px;
 	background-color: #eee;
 	border: 1px solid @border-gray;
-	margin-bottom: 1px;
+	margin-bottom: 6px;
 	-webkit-box-shadow: none;
 	li:hover {
 		color: #808080;
@@ -126,6 +139,13 @@ button:focus, .btn:focus{
 
 	.navbar-brand{
 		padding: 7px 12px;
+		width: 43px;
+		img{
+			width: 24px;
+			position: absolute;
+			left: 10px;
+			top: 3px
+		}
 	}
 
 	.navbar-right>li{
@@ -133,6 +153,9 @@ button:focus, .btn:focus{
 		a{
 			position: relative;
 			top: 3px;
+		}
+		a:hover{
+			border: 1px solid transparent !important;
 		}
 	}
 
@@ -202,11 +225,27 @@ button:focus, .btn:focus{
 	}
 	.default-notifier{
 		height: 100%;
-		text-align: center;
+		padding: 30px;	
+
 		p{
-			color: gray;
-			margin-top: 200px;
+			margin-bottom: 20px;
+		}	
+		p>span{
+			font-weight: bold; 
+			margin: 0px 2px;
+		}
+
+		.number{
+			background: @purple;
+			width: 21px;
+			height: 20px;
+			padding: 2px 1px;
+			text-align: center;
+			display: inline-block;
+			border-radius: 20px;
+			color: white;
 			font-weight: bold;
+			font-size: 12px;
 		}
 	}
 	.btn-run{

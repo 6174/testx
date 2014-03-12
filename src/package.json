@@ -15,7 +15,9 @@
 		"toolbar": true,
 		"width": 900,
 		"height": 536,
-		"resizable": false,
+		"min-width": 900,
+		"min-height": 536,
+		"resizable": true,
 		"position": "center",
 		"frame": true,
 		"show": true

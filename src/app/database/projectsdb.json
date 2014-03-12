@@ -1,19 +1,10 @@
 [
   {
-    "url": "file:///D:/projects/testx/demo/todo_list/src/textx_todo_demo.html",
-    "name": "test",
-    "broswer": "chrome",
-    "testFramework": "jasmine",
-    "proxy": true,
-    "dirname": "D:\\projects\\testx\\demo\\todo_list\\test",
-    "currentProject": false
-  },
-  {
-    "browser": "chrome",
+    "browser": "phatomjs",
     "url": "http://www.baidu.com",
-    "testFramework": "jasmine",
     "name": "my-test",
     "broswer": "chrome",
+    "testFramework": "jasmine",
     "proxy": true,
     "dirname": "C:\\Users\\Administrator\\Desktop\\my-test",
     "currentProject": false
